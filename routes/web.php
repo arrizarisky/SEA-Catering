@@ -6,6 +6,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/pages/menuCatering', function () {
+    return view('pages.menuCatering');
+})->name('menuCatering');
+
+Route::get('/pages/testimoni', function () {
+    return view('pages.testimoni');
+})->name('Testimoni');
+
+Route::get('/pages/subscription', function () {
+    return view('pages.subscription');
+})->name('subscribe');
+
+Route::get('/pages/kontak', function () {
+    return view('pages.kontak');
+})->name('kontak');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

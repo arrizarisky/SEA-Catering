@@ -1,6 +1,6 @@
 # SEA Catering Web Application
 
-Website layanan makanan sehat dengan sistem pemesanan online dan pengiriman cepat.
+Tugas Untuk Memenuhi Syarat Pendaftaran Software Engineering Academy COMPFEST17
 
 ---
 

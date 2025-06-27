@@ -22,13 +22,13 @@
     </head>
     <body class="flex items-center lg:justify-center flex-col bg-[#FFF0DC]">
 {{-- Navbar --}}
-        <header class="fixed top-0 w-full text-sm mb-6 not-has-[nav]:hidden z-[99999]">
+        <header id="navbar" class="fixed top-0 w-full text-sm mb-6 not-has-[nav]:hidden z-[99999]">
             @if (Route::has('login'))
             <nav class="flex flex-wrap items-center pt-10 z-99 relative mx-auto max-w-screen-xl md-order-1 justify-between gap-4 font-playFair border-b border-[#543A14]/10 pb-2">
                     <div class="hidden lg:flex home space-x-6 text-xl">
-                        <a href="#" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
-                        <a href="#" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Menu</a>
-                        <a href="#" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
+                        <a href="/" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
+                        <a href="{{ route('menuCatering') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Menu</a>
+                        <a href="{{ route('Testimoni') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
                     </div>    
                     <div class="flex space-x-2">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -81,8 +81,8 @@
 
                     <div class="hidden lg:flex  space-x-2 text-xl w-full md:items-center md:w-auto">
                         
-                        <a href="#" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Langganan</a>
-                        <a href="#" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Kontak</a>
+                        <a href="{{ route('subscribe') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Langganan</a>
+                        <a href="{{ route('kontak') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Kontak</a>
                         
                     
                     @auth
@@ -156,7 +156,7 @@
 {{-- End --}}
 
 {{-- Hero Section --}}
-        <section class="w-full h-full flex flex-col text-center py-20 px-4 md:px-20 font-playFair bg-[#FFD586]">
+        <section id="welcome-page" class="w-full h-full flex flex-col text-center py-20 px-4 md:px-20 font-playFair bg-[#FFD586]">
             <div class="grid lg:grid-cols-2">
                 <img
                     alt=""
@@ -188,7 +188,7 @@
 {{-- End --}}
 
 {{-- Tentang Kami --}}
-        <section class="py-20 px-6 md:px-20">
+        <section id="tentang-kami" class="py-20 px-6 md:px-20">
             <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 md:items-center md:gap-8">
                     
@@ -300,7 +300,7 @@
 {{-- End --}}
 
     {{-- Our Plan  --}}
-        <section class="px-10 py-20 md:px-20 font-poppins">
+        <section id="langganan" class="px-10 py-20 md:px-20 font-poppins">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold mb-3 font-playFair text-[#131010] tracking-wide">Paket Plan</h2>
                 <p class="max-w-xl mx-auto font-poppins text-[#543A14] ">Mulai dari diet ringan hingga nutrisi intensif, SEA Catering menyediakan paket harian sehat yang fleksibel, lezat, dan dikirim langsung ke pintumu. Tinggal pilih waktu makan: pagi, siang, atau malam — sehat jadi lebih mudah!</p>
@@ -536,115 +536,115 @@
             </div>
         </section>
         {{-- Testimoni --}}
-        <section class="bg-[#FFF0DC] py-20 px-4 sm:px-6 lg:px-20 font-poppins">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-[#131010] font-playFair">Apa Kata Pelanggan Kami?</h2>
-            <p class="mt-4 text-[#543A14] text-base sm:text-lg">
-            Testimoni dari pelanggan setia yang telah merasakan manfaat SEA Catering
-            </p>
-        </div>
-
-        <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <!-- Testimonial 1 -->
-            <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
-            <div class="flex items-center gap-4 mb-4">
-                <img class="w-14 h-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer 1">
-                <div>
-                <h3 class="font-semibold text-lg">Ayu Lestari</h3>
-                <p class="text-sm text-[#543A14]">Karyawan Swasta</p>
-                </div>
-            </div>
-            <p class="text-sm text-[#543A14]">
-                “Diet Plan dari SEA Catering benar-benar ngebantu aku jaga pola makan sehat meski kerjaan padat. Makanannya fresh, variatif, dan tetap enak!”
-            </p>
-            <div class="mt-4 text-yellow-500">
-                ★★★★★
-            </div>
+        <section id="testimoni" class="bg-[#FFF0DC] py-20 px-4 sm:px-6 lg:px-20 font-poppins">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-[#131010] font-playFair">Apa Kata Pelanggan Kami?</h2>
+                <p class="mt-4 text-[#543A14] text-base sm:text-lg">
+                Testimoni dari pelanggan setia yang telah merasakan manfaat SEA Catering
+                </p>
             </div>
 
-            <!-- Testimonial 2 -->
-            <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
-            <div class="flex items-center gap-4 mb-4">
-                <img class="w-14 h-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer 2">
-                <div>
-                <h3 class="font-semibold text-lg">Rizky Ananda</h3>
-                <p class="text-sm text-[#543A14]">Atlet Gym</p>
+            <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
+                <div class="flex items-center gap-4 mb-4">
+                    <img class="w-14 h-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer 1">
+                    <div>
+                    <h3 class="font-semibold text-lg">Ayu Lestari</h3>
+                    <p class="text-sm text-[#543A14]">Karyawan Swasta</p>
+                    </div>
                 </div>
-            </div>
-            <p class="text-sm text-[#543A14]">
-                “Paket Protein Plan dari SEA luar biasa! Komposisi gizinya jelas, pas buat recovery latihan. Dada ayam dan dagingnya juicy banget.”
-            </p>
-            <div class="mt-4 text-yellow-500">
-                ★★★★★
-            </div>
-            </div>
+                <p class="text-sm text-[#543A14]">
+                    “Diet Plan dari SEA Catering benar-benar ngebantu aku jaga pola makan sehat meski kerjaan padat. Makanannya fresh, variatif, dan tetap enak!”
+                </p>
+                <div class="mt-4 text-yellow-500">
+                    ★★★★★
+                </div>
+                </div>
 
-            <!-- Testimonial 3 -->
-            <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
-            <div class="flex items-center gap-4 mb-4">
-                <img class="w-14 h-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer 3">
-                <div>
-                <h3 class="font-semibold text-lg">Bapak Hendra</h3>
-                <p class="text-sm text-[#543A14]">Langganan Royal Plan</p>
+                <!-- Testimonial 2 -->
+                <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
+                <div class="flex items-center gap-4 mb-4">
+                    <img class="w-14 h-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer 2">
+                    <div>
+                    <h3 class="font-semibold text-lg">Rizky Ananda</h3>
+                    <p class="text-sm text-[#543A14]">Atlet Gym</p>
+                    </div>
+                </div>
+                <p class="text-sm text-[#543A14]">
+                    “Paket Protein Plan dari SEA luar biasa! Komposisi gizinya jelas, pas buat recovery latihan. Dada ayam dan dagingnya juicy banget.”
+                </p>
+                <div class="mt-4 text-yellow-500">
+                    ★★★★★
+                </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
+                <div class="flex items-center gap-4 mb-4">
+                    <img class="w-14 h-14 rounded-full object-cover" src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer 3">
+                    <div>
+                    <h3 class="font-semibold text-lg">Bapak Hendra</h3>
+                    <p class="text-sm text-[#543A14]">Langganan Royal Plan</p>
+                    </div>
+                </div>
+                <p class="text-sm text-[#543A14]">
+                    “Royal Plan bikin hidup saya jauh lebih praktis. Sekali pesan, langsung dapat makanan sehat setiap hari. Rasanya mewah tapi tetap sehat.”
+                </p>
+                <div class="mt-4 text-yellow-500">
+                    ★★★★★
+                </div>
                 </div>
             </div>
-            <p class="text-sm text-[#543A14]">
-                “Royal Plan bikin hidup saya jauh lebih praktis. Sekali pesan, langsung dapat makanan sehat setiap hari. Rasanya mewah tapi tetap sehat.”
-            </p>
-            <div class="mt-4 text-yellow-500">
-                ★★★★★
-            </div>
-            </div>
-        </div>
         </section>
 
 {{-- end --}}
         {{-- Footer --}}
-        <footer class="w-full bg-[#0f0f1a] text-white font-poppins">
-        <div class="max-w-screen-xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-            
-            <!-- Logo & Description -->
-            <div>
-            <h2 class="text-2xl font-semibold font-playFair tracking-wider text-[#FFD586]">SeaCatering</h2>
-            <p class="mt-4 text-sm text-gray-400 leading-relaxed">
-                SEA Catering hadir memberikan solusi makanan sehat untuk Anda, dengan pengiriman cepat, terjadwal, dan penuh nutrisi. Hidup sehat kini makin mudah!
-            </p>
+        <footer id="contact" class="w-full bg-[#0f0f1a] text-white font-poppins">
+            <div class="max-w-screen-xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+                
+                <!-- Logo & Description -->
+                <div>
+                <h2 class="text-2xl font-semibold font-playFair tracking-wider text-[#FFD586]">SeaCatering</h2>
+                <p class="mt-4 text-sm text-gray-400 leading-relaxed">
+                    SEA Catering hadir memberikan solusi makanan sehat untuk Anda, dengan pengiriman cepat, terjadwal, dan penuh nutrisi. Hidup sehat kini makin mudah!
+                </p>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                <h3 class="text-xl font-semibold mb-4 text-[#FFD586]">Kontak Kami</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><strong>Manager:</strong> Brian</li>
+                    <li><strong>Telepon:</strong> <a href="tel:08123456789" class="hover:text-[#FFD586]">08123456789</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:info@seacatering.id" class="hover:text-[#FFD586]">info@seacatering.id</a></li>
+                </ul>
+                </div>
+
+                <!-- Navigation -->
+                <div>
+                <h3 class="text-xl font-semibold mb-4 text-[#FFD586]">Navigasi</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#" class="hover:text-[#FFD586]">Beranda</a></li>
+                    <li><a href="#" class="hover:text-[#FFD586]">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-[#FFD586]">Paket Makanan</a></li>
+                    <li><a href="#" class="hover:text-[#FFD586]">Langganan</a></li>
+                    <li><a href="#" class="hover:text-[#FFD586]">Kontak</a></li>
+                </ul>
+                </div>
             </div>
 
-            <!-- Contact -->
-            <div>
-            <h3 class="text-xl font-semibold mb-4 text-[#FFD586]">Kontak Kami</h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-                <li><strong>Manager:</strong> Brian</li>
-                <li><strong>Telepon:</strong> <a href="tel:08123456789" class="hover:text-[#FFD586]">08123456789</a></li>
-                <li><strong>Email:</strong> <a href="mailto:info@seacatering.id" class="hover:text-[#FFD586]">info@seacatering.id</a></li>
-            </ul>
+            <!-- Footer bottom -->
+            <div class="border-t border-gray-700 mt-12">
+                <div class="max-w-screen-xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2025 SEA Catering. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-[#FFD586]">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#FFD586]">Terms</a>
+                    <a href="#" class="hover:text-[#FFD586]">Cookies</a>
+                </div>
+                </div>
             </div>
-
-            <!-- Navigation -->
-            <div>
-            <h3 class="text-xl font-semibold mb-4 text-[#FFD586]">Navigasi</h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-                <li><a href="#" class="hover:text-[#FFD586]">Beranda</a></li>
-                <li><a href="#" class="hover:text-[#FFD586]">Tentang Kami</a></li>
-                <li><a href="#" class="hover:text-[#FFD586]">Paket Makanan</a></li>
-                <li><a href="#" class="hover:text-[#FFD586]">Langganan</a></li>
-                <li><a href="#" class="hover:text-[#FFD586]">Kontak</a></li>
-            </ul>
-            </div>
-        </div>
-
-        <!-- Footer bottom -->
-        <div class="border-t border-gray-700 mt-12">
-            <div class="max-w-screen-xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-            <p>&copy; 2025 SEA Catering. All rights reserved.</p>
-            <div class="flex space-x-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-[#FFD586]">Privacy Policy</a>
-                <a href="#" class="hover:text-[#FFD586]">Terms</a>
-                <a href="#" class="hover:text-[#FFD586]">Cookies</a>
-            </div>
-            </div>
-        </div>
         </footer>
 
         <script>
