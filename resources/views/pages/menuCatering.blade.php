@@ -135,7 +135,7 @@
 @endpush --}}
 
     <!-- CTA Langganan -->
-    <section class="bg-[#543A14] text-[#FFF0DC] py-16 px-6 mt-10 md:px-20 text-center font-playFair rounded-2xl">
+    <section class="bg-[#543A14] text-[#FFF0DC] py-16 px-6 mb-10 md:px-20 text-center font-playFair rounded-2xl">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">Langganan Makanan Sehat Sekarang!</h2>
         <p class="max-w-2xl mx-auto mb-6 text-lg">Nikmati berbagai pilihan paket sehat mulai dari sarapan hingga makan malam. Kami antar ke depan pintu rumahmu setiap hari!</p>
         <a href="{{ route('subscribe') }}" onclick="toggleLanggananModal()" class="px-8 py-3 bg-[#F0BB78] text-[#131010] font-bold rounded-xl hover:bg-[#FFD586] transition">
@@ -143,24 +143,6 @@
         </a>
     </section>
 
-    <!-- Form Tambah Testimoni -->
-    <div class="mt-10 bg-white rounded-xl p-6 shadow-md w-full mx-auto mb-10">
-        <h3 class="text-xl font-bold mb-4">Tulis Testimoni Anda</h3>
-        <form action="#" method="POST">
-            <input type="text" name="nama" placeholder="Nama Anda" class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-xl">
-            <textarea name="pesan" rows="4" placeholder="Tulis pesan..." class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-xl"></textarea>
-            <label class="block mb-2 font-semibold">Rating:</label>
-            <select name="rating" class="w-full mb-4 px-4 py-2 border border-gray-300 rounded-xl">
-                <option value="">Pilih Rating</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="1">⭐</option>
-            </select>
-            <button type="submit" class="w-full py-2 bg-[#131010] text-[#F0BB78] font-bold rounded-xl hover:bg-[#543A14]">Kirim Testimoni</button>
-        </form>
-    </div>
 </section>
 
 <!-- Modal Script -->
@@ -170,5 +152,6 @@
         modal.classList.toggle('hidden');
         modal.classList.toggle('flex');
     }
+
 </script>
 @endsection

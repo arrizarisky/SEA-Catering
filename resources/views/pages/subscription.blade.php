@@ -23,9 +23,9 @@
                 <label class="block font-semibold mb-2">Pilih Paket Langganan</label>
                 <select name="paket" class="w-full px-4 py-2 border border-gray-300 rounded-xl">
                     <option value="">-- Pilih Paket --</option>
-                    <option value="Healthy Plan">Healthy Plan - Rp 250.000</option>
-                    <option value="Fitness Pro">Fitness Pro - Rp 400.000</option>
-                    <option value="Vegan Delight">Vegan Delight - Rp 300.000</option>
+                    <option value="Diet Plan">Diet Plan - Rp 30.000</option>
+                    <option value="Protein Plan">Protein Plan - Rp 40.000</option>
+                    <option value="Royal Plan">Royal Plan - Rp 60.000</option>
                 </select>
             </div>
 
