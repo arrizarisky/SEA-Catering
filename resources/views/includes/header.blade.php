@@ -3,7 +3,7 @@
             @if (Route::has('login'))
             <nav class="flex flex-wrap items-center pt-10 z-99 relative mx-auto max-w-screen-xl md-order-1 justify-between gap-4 font-playFair border-b border-[#543A14]/10 pb-2">
                     <div class="hidden lg:flex home space-x-6 text-xl">
-                        <a href="/" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
+                        <a href="" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
                         <a href="{{ route('menuCatering') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Menu</a>
                         <a href="{{ route('Testimoni') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
                     </div>    
@@ -57,24 +57,22 @@
                     <div class="hidden lg:flex  space-x-2 text-xl w-full md:items-center md:w-auto">
                         
                         <a href="{{ route('subscriptions.create') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Langganan</a>
-                        <a href="{{ route('kontak') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Kontak</a>
-                        
-                    
-                    @auth
+                        <a href="{{ route('kontak') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Kontak</a>                   
+                        @auth
                             @if(auth()->user()->role === 'admin')
-                                <a href="{{ route('admin.dashboard') }}" class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300"
-                                >Dashboard Admin</a>
-                            @elseif(auth()->user()->role === 'pelanggan')
-                                <a href="{{ route('pelanggan.dashboard') }}" class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300">Dashboard Pelanggan</a>
-                            @endif
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="z-50 relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300"
-                        >
-                            Login
-                        </a>
-                    @endauth
+                                    <a href="{{ route('admin.dashboard') }}" class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300"
+                                    >Dashboard Admin</a>
+                                @elseif(auth()->user()->role === 'pelanggan')
+                                    <a href="{{ route('subscription.dashboard') }}" class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300">Dashboard Pelanggan</a>
+                                @endif
+                            @else
+                                <a
+                                    href="{{ route('login') }}"
+                                    class="z-50 relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300"
+                                >
+                                    Login
+                                </a>
+                        @endauth
                     </div>
                 </nav>
                 <div class="w-full px-4 sm:px-6 lg:px-10" id="navbar-sea">

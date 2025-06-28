@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\alert;
+
 class RoleMiddleware
 {
     /**
@@ -21,9 +23,9 @@ class RoleMiddleware
         }
 
         if (!in_array(Auth::user()->role, $roles)) {
-            abort(403, 'Akses ditolak.');
+            alert( $php_errormsg);
         }
-
         return $next($request);
+        return redirect()->back();
     }
 }

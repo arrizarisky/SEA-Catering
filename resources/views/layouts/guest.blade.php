@@ -22,7 +22,7 @@
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex-col flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4 sm:px-6 lg:px-8">
             <div>
-                <a href="/">
+                <a href="">
                     <x-application-logo class="w-20 h-20 fill-current text-grey-800 dark:text-white" />
                 </a>
             </div>

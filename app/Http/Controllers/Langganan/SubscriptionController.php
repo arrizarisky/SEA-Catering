@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Langganan;
 
 use App\Models\Subscription;
+use App\Models\User;
 use App\Models\SubscriptionPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -82,4 +83,6 @@ class SubscriptionController extends Controller
     {
         return view('subscriptions.success');
     }
+
+
 }

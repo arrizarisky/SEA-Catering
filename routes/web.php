@@ -3,8 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Langganan\SubscriptionController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\Langganan\SubscriptionDashboardController;
+use App\Http\Controllers\Langganan\SubscriptionCancelController;
+use App\Http\Controllers\Langganan\SubscriptionPauseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserManagementControll;
 
@@ -24,12 +25,8 @@ Route::get('/pages/kontak', function () {
     return view('pages.kontak');
 })->name('kontak');
 
-// Make sure the controller class matches the import above.
-Route::get('/pelanggan/dashboard',[SubscriptionDashboardController::class,'index'])->name('pelanggan.dashboard')->middleware('role:pelanggan');
-
-
 Route::get('/admin/dashboard',[AdminDashboardController::class,'index'])->name('admin.dashboard')->middleware(['auth', 'role:admin']);
-Route::get('/pelanggan/dashboard',[SubscriptionDashboardController::class,'index'])->name('pelanggan.dashboard')->middleware(['auth', 'role:pelanggan']);
+Route::get('/subscription/dashboard',[SubscriptionDashboardController::class,'index'])->name('subscription.dashboard')->middleware(['auth', 'role:pelanggan']);
 
 
 Route::middleware('auth')->group(function () {
@@ -49,8 +46,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::patch('/user/{user}/toggle', [UserManagementControll::class, 'toggleStatus'])->name('user.toggle');
 });
 
-Route::get('/admin-only', function () {
-    return 'Hanya admin yang boleh lihat ini';
-})->middleware(['auth', 'role:admin']);
+Route::middleware(['auth', 'role:pelanggan'])->group(function () {
+    Route::get('/subscription/dashboard', [\App\Http\Controllers\Langganan\SubscriptionDashboardController::class, 'subscriptionDashboard'])->name('subscription.dashboard');
+    Route::post('/subscription/pause', [\App\Http\Controllers\Langganan\SubscriptionDashboardController::class, 'pause'])->name('subscription.pause');
+    Route::post('/subscription/cancel', [\App\Http\Controllers\Langganan\SubscriptionDashboardController::class, 'cancel'])->name('subscription.cancel');
+});
+
+Route::patch('/admin/subscription/{id}/activate', [\App\Http\Controllers\Admin\AdminSubscriptionController::class, 'activate'])->name('admin.subscription.activate');
 
 require __DIR__.'/auth.php';

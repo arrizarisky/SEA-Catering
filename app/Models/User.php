@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Subscription;
 
 class User extends Authenticatable
 {
@@ -46,12 +47,18 @@ class User extends Authenticatable
 
     public function subscriptions()
     {
-        return $this->hasMany(Subscription::class);
+        return $this->hasMany(\App\Models\Subscription::class);
     }
 
     public function activeSubscription()
     {
-        return $this->hasOne(Subscription::class)->latestOfMany(); // langganan terbaru
+        return $this->hasOne(Subscription::class)
+        ->where('is_cancelled', false)
+        ->where(function ($query) {
+            $query->whereNull('pause_end')
+                  ->orWhere('pause_end', '<', now());
+        })
+        ->latestOfMany();
     }
 
     /**

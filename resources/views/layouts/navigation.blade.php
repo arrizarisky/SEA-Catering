@@ -8,15 +8,11 @@
                     @auth
                         @if(Auth::user()->role == 'admin')
                             <a href="{{ route('admin.dashboard') }}">
-                                <x-application-logo class="block h-10 w-10 fill-current text-gray-800" />
+                                <x-application-logo class="block h-10 w-10 fill-current text-white" />
                             </a>
                         @elseif(Auth::user()->role == 'pelanggan')
-                            <a href="{{ route('pelanggan.dashboard') }}">
-                                <x-application-logo class="block h-10 w-10 fill-current text-gray-800" />
-                            </a>
-                        @else
-                            <a href="{{ url('/') }}">
-                                <x-application-logo class="block h-10 w-10 fill-current text-gray-800" />
+                            <a href="{{ route('subscription.dashboard') }}">
+                                <x-application-logo class="block h-10 w-10 fill-current text-white" />
                             </a>
                         @endif
                     @endauth
@@ -34,7 +30,7 @@
                                 {{ __('Set Account') }}
                             </x-nav-link>
                         @elseif(Auth::user()->role == 'pelanggan')
-                            <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
+                            <x-nav-link :href="route('subscription.dashboard')" :active="request()->routeIs('subscription.dashboard')">
                                 {{ __('Dashboard Pelanggan') }}
                             </x-nav-link>
                         @endif
@@ -96,7 +92,7 @@
                         {{ __('Dashboard Admin') }}
                     </x-responsive-nav-link>
                 @elseif(auth()->user()->role === 'pelanggan')
-                    <x-responsive-nav-link :href="route('pelanggan.dashboard')" :active="request()->routeIs('pelanggan.dashboard')">
+                    <x-responsive-nav-link :href="route('subscription.dashboard')" :active="request()->routeIs('subscription.dashboard')">
                        {{ __('Dashboard Pelanggan') }}
                     </x-responsive-nav-link>
                 @endif
