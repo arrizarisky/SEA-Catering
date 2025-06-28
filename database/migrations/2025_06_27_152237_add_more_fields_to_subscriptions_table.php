@@ -31,18 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('subscriptions', function (Blueprint $table) {
-            $table->dropColumn([
-                'full_name',
-                'phone_number',
-                'meal_types',
-                'delivery_days',
-                'allergies',
-                'total_price',
-                'address',
-                'payment_method',
-                'notes',
-            ]);
-        });
+        Schema::dropIfExists('subcriptions');
     }
 };

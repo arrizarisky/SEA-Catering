@@ -58,7 +58,7 @@
             </div>
         </div>
         <!-- Modal -->
-        <div id="modal-{{ $index }}" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 px-4 py-8">
+        <div id="modal-{{ $index }}" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 px-4 py-8 overflow-y-auto">
             <div class="bg-white rounded-xl shadow-xl max-w-5xl w-full overflow-hidden flex flex-col md:flex-row relative">
                 <!-- Tombol close -->
                 <button onclick="toggleModal({{ $index }})" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10">
@@ -66,7 +66,7 @@
                 </button>
 
                 <!-- Gambar -->
-                <div class="md:w-1/2 w-full">
+                <div class="md:w-1/2 w-full flex items-center justify-center">
                     <img src="{{ asset('images/' . $paket['img']) }}" alt="{{ $paket['name'] }}" class="h-full w-full object-cover">
                 </div>
 
@@ -95,9 +95,20 @@
 
                     <!-- Tombol Action -->
                     <div>
-                        <button class="w-full bg-[#543A14] hover:bg-[#131010] text-white py-3 rounded-xl text-lg font-semibold">
+                        <button class="w-full  bg-[#543A14] hover:bg-[#131010] text-white py-3 rounded-xl text-lg font-semibold" onclick="document.getElementById('loginModal-{{ $index }}').classList.remove('hidden')">  
                             Beli Sekarang
                         </button>
+                        <div id="loginModal-{{ $index }}" class="fixed flex inset-0 z-50 bg-black bg-opacity-50 items-center justify-center hidden">
+                            <div class="bg-white p-8 rounded-xl max-w-md w-full text-center shadow-xl">
+                                <h2 class="text-2xl font-bold mb-4 text-[#131010]">Login Diperlukan</h2>
+                                <p class="text-[#543A14] mb-6">Silakan login atau daftar terlebih dahulu untuk melanjutkan langganan.</p>
+                                <div class="flex justify-center gap-4">
+                                    <a href="{{ route('login') }}" class="bg-[#131010] text-[#F0BB78] px-4 py-2 rounded-xl hover:bg-[#543A14]">Login</a>
+                                    <a href="{{ route('register') }}" class="bg-[#B13BFF] text-white px-4 py-2 rounded-xl hover:bg-[#8F29CC]">Daftar</a>
+                                </div>
+                                <button onclick="document.getElementById('loginModal-{{ $index }}').classList.add('hidden')" class="mt-6 text-sm text-gray-500 underline hover:text-gray-700">Tutup</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,7 +149,7 @@
     <section class="bg-[#543A14] text-[#FFF0DC] py-16 px-6 mb-10 md:px-20 text-center font-playFair rounded-2xl">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">Langganan Makanan Sehat Sekarang!</h2>
         <p class="max-w-2xl mx-auto mb-6 text-lg">Nikmati berbagai pilihan paket sehat mulai dari sarapan hingga makan malam. Kami antar ke depan pintu rumahmu setiap hari!</p>
-        <a href="{{ route('subscribe') }}" onclick="toggleLanggananModal()" class="px-8 py-3 bg-[#F0BB78] text-[#131010] font-bold rounded-xl hover:bg-[#FFD586] transition">
+        <a href="{{ route('subscriptions.create') }}" onclick="toggleLanggananModal()" class="px-8 py-3 bg-[#F0BB78] text-[#131010] font-bold rounded-xl hover:bg-[#FFD586] transition">
             Daftar Sekarang
         </a>
     </section>

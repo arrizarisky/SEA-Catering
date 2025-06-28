@@ -56,17 +56,17 @@
 
                     <div class="hidden lg:flex  space-x-2 text-xl w-full md:items-center md:w-auto">
                         
-                        <a href="{{ route('subscribe') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Langganan</a>
+                        <a href="{{ route('subscriptions.create') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Langganan</a>
                         <a href="{{ route('kontak') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Kontak</a>
                         
                     
                     @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300"
-                        >
-                            Dashboard
-                        </a>
+                            @if(auth()->user()->role === 'admin')
+                                <a href="{{ route('admin.dashboard') }}" class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300"
+                                >Dashboard Admin</a>
+                            @elseif(auth()->user()->role === 'pelanggan')
+                                <a href="{{ route('pelanggan.dashboard') }}" class="relative px-4 py-2 bg-[#131010] text-[#F0BB78] font-playFair font-bold hover:bg-[#543A14] focus:ring-4 focus:ring-[#FFF0DC] focus:outline-none rounded-xl transition duration-300">Dashboard Pelanggan</a>
+                            @endif
                     @else
                         <a
                             href="{{ route('login') }}"

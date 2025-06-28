@@ -5,18 +5,41 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-10 w-10 text-[#F0BB78]" />
-                    </a>
+                    @auth
+                        @if(Auth::user()->role == 'admin')
+                            <a href="{{ route('admin.dashboard') }}">
+                                <x-application-logo class="block h-10 w-10 fill-current text-gray-800" />
+                            </a>
+                        @elseif(Auth::user()->role == 'pelanggan')
+                            <a href="{{ route('pelanggan.dashboard') }}">
+                                <x-application-logo class="block h-10 w-10 fill-current text-gray-800" />
+                            </a>
+                        @else
+                            <a href="{{ url('/') }}">
+                                <x-application-logo class="block h-10 w-10 fill-current text-gray-800" />
+                            </a>
+                        @endif
+                    @endauth
                 </div>
-
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        <i class="fi fi-sr-home text-2xl"></i>
-                    </x-nav-link>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center">
+                    @auth
+                        {{-- Dashboard Link --}}
+                        @if(Auth::user()->role == 'admin')
+                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                                {{ __('Dashboard Admin') }}
+                            </x-nav-link>
+                            {{-- Admin Links --}}
+                            <x-nav-link :href="route('admin.user.index')" :active="request()->routeIs('admin.user.index')">
+                                {{ __('Set Account') }}
+                            </x-nav-link>
+                        @elseif(Auth::user()->role == 'pelanggan')
+                            <x-nav-link :href="route('user.dashboard')" :active="request()->routeIs('user.dashboard')">
+                                {{ __('Dashboard Pelanggan') }}
+                            </x-nav-link>
+                        @endif
+                    @endauth
                 </div>
-            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -67,9 +90,17 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            @auth
+                @if(auth()->user()->role === 'admin')
+                    <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                        {{ __('Dashboard Admin') }}
+                    </x-responsive-nav-link>
+                @elseif(auth()->user()->role === 'pelanggan')
+                    <x-responsive-nav-link :href="route('pelanggan.dashboard')" :active="request()->routeIs('pelanggan.dashboard')">
+                       {{ __('Dashboard Pelanggan') }}
+                    </x-responsive-nav-link>
+                @endif
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
