@@ -27,7 +27,8 @@
                 @forelse($categories as $category)
                     <tr class="border-t">
                         <td class="p-2">{{ $category->name }}</td>
-                        <td class="p-2">
+                        <td class="p-2 flex gap-3">
+                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-blue-600 hover:underline">Edit</a>
                             <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
                                 @csrf
                                 @method('DELETE')

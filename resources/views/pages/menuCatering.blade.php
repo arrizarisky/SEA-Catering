@@ -110,11 +110,11 @@
                             </div>
                         </div>
                         @else
-                            <a href="{{ route('subscriptions.quick-form', ['plan' => $paket['id']]) }}" class="w-full block bg-[#543A14] hover:bg-[#131010] text-white py-3 rounded-xl text-lg font-semibold text-center">
+                            <a href="{{ route('subscriptions.quick-form', ['plan' => $paket['id']]) }}" class="w-full block bg-[#543A14] hover:bg-[#131010] text-white py-3 rounded-xl text-lg font-semibold text-center mb-2">
                                 Beli Sekarang
                             </a>
                             @if(auth()->user()->subscriptions()->where('subscription_plan_id', $paket['id'])->exists())
-                                <a href="{{ route('testimoni.create', $paket['id']) }}" class="text-indigo-600 underline">Tulis Testimoni</a>
+                                <a href="{{ route('testimoni.create', $paket['id']) }}" class="w-40 block bg-[#543A14] hover:bg-[#131010] text-white py-3 rounded-xl text-lg font-semibold text-center">Tulis Testimoni</a>
                             @endif
                         @endguest
                         

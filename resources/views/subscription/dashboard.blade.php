@@ -30,7 +30,7 @@
                     type="submit"
                     class="group mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-[#F0BB78] px-5 py-3 text-white transition focus:ring-3 focus:ring-yellow-400 focus:outline-hidden sm:mt-0 sm:w-auto"
                     >
-                    <span class="text-sm font-medium"> Explore </span>
+                    <a href="{{ route('Beranda') }}" class="text-sm font-medium"> Explore </a>
 
                     <svg
                         class="size-5 shadow-sm rtl:rotate-180"

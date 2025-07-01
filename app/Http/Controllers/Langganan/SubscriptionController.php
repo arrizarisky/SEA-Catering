@@ -13,14 +13,12 @@ use App\Http\Controllers\Controller;
 class SubscriptionController extends Controller
 {
 
-      // Tampilkan form langganan
     public function create()
     {
         $plans = SubscriptionPlan::all();
         return view('subscription.create', compact('plans'));
     }
 
-    // Hitung total harga berdasarkan input form (AJAX)
     public function calculate(Request $request)
     {
         $request->validate([
@@ -39,7 +37,6 @@ class SubscriptionController extends Controller
         ]);
     }
 
-    // Simpan langganan baru setelah konfirmasi pembayaran
     public function store(Request $request)
     {
         $request->validate([
@@ -100,7 +97,6 @@ class SubscriptionController extends Controller
     }
     
 
-    // Tampilkan halaman sukses setelah simpan
     public function success()
     {
         return view('subscription.success');

@@ -97,7 +97,7 @@ Agar perubahan pada file frontend langsung terlihat.
 
 ## ✅ Tools yang Digunakan
 
-- Laravel 8.3
+- Laravel 12
 - Laravel Breeze
 - Tailwind CSS
 - Vite

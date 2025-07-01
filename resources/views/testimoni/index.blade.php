@@ -5,7 +5,7 @@
     <h2 class="text-2xl md:text-3xl font-bold mt-6 mb-6 text-center">Testimoni Pengguna</h2>
     <div class="max-h-[70vh] overflow-y-auto whitespace-wrap bg-[#FFF0DC] py-20 px-4 sm:px-6 lg:px-20 font-poppins">
         @foreach ($testimonis as $testimoni)
-         <div class="mt-12 grid gap-8 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 lg-p-20">
+         <div class="mt-12 grid gap-8 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-2 lg-p-20">
             <!-- Testimonial 1 -->
             <div class="bg-white shadow-xl rounded-3xl p-8 text-[#131010]">
                 <div class="flex items-center gap-4 mb-4">

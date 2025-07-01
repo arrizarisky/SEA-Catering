@@ -21,12 +21,10 @@ class TestimoniController extends Controller
     {
         $user = Auth::user();
 
-        // Cek apakah user pernah berlangganan paket ini
         $hasSubscribed = Subscription::where('user_id', $user->id)
             ->where('subscription_plan_id', $plan->id)
             ->exists();
 
-        // Cek apakah sudah pernah beri testimoni untuk plan ini
         $alreadyReviewed = Testimoni::where('user_id', $user->id)
             ->where('subscription_plan_id', $plan->id)
             ->exists();
