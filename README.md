@@ -4,16 +4,6 @@ Tugas Untuk Memenuhi Syarat Pendaftaran Software Engineering Academy COMPFEST17
 
 ---
 
-## 🚀 Fitur Utama
-
-- Pilihan paket makanan sehat: Diet, Protein, dan Royal Plan
-- Pengiriman fleksibel: pilih waktu makan pagi / siang / malam
-- Sistem testimoni pelanggan
-- UI modern dengan Tailwind CSS
-- Responsif & ringan
-
----
-
 ## 🖥️ Langkah Instalasi di Komputer Lokal
 
 Ikuti langkah-langkah berikut untuk menjalankan website ini di komputer kamu:
