@@ -101,7 +101,7 @@ Agar perubahan pada file frontend langsung terlihat.
 
 - Pastikan sudah menginstall **PHP**, **Composer**, **Node.js**, **npm**, dan **MySQL** di komputer kamu.
 - Jika ada error permission di Windows, jalankan terminal sebagai administrator.
-- Untuk login admin/pelanggan, gunakan akun yang sudah di-seed atau daftar akun baru.
+- Untuk login admin/pelanggan, gunakan akun yang sudah di-seed atau Login admin : `admin@sea-catering.com` / `password`
 
 ---
 
