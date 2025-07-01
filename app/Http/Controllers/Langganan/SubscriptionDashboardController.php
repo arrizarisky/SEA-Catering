@@ -9,11 +9,12 @@ use App\Models\User;
 
 class subscriptionDashboardController extends Controller
 {
+    
     public function index() {
         return view('subscription.dashboard');
     }
 
-        public function subscriptionDashboard()
+    public function subscriptionDashboard()
     {
         $user = Auth::user();
         $subscription = $user
@@ -22,7 +23,7 @@ class subscriptionDashboardController extends Controller
             ->with('subscriptionPlan')
             ->first();
 
-        return view('subscription.dashboard', compact('subscription'));
+        return view('subscription.account', compact('subscription'));
     }
 
     public function pause(Request $request)
@@ -38,7 +39,7 @@ class subscriptionDashboardController extends Controller
     ->first();
 
     if (!$subscription) {
-        return redirect()->route('subscription.dashboard')->with('error', 'Langganan tidak ditemukan.');
+        return redirect()->route('subscription.account')->with('error', 'Langganan tidak ditemukan.');
     }
 
     $subscription->update([
@@ -53,7 +54,7 @@ class subscriptionDashboardController extends Controller
 
 
 
-    return redirect()->route('subscription.dashboard')->with('success', 'Langganan berhasil di-pause.');
+    return redirect()->route('subscription.account')->with('success', 'Langganan berhasil di-pause.');
 }
 
     public function cancel()
@@ -61,7 +62,7 @@ class subscriptionDashboardController extends Controller
         $subscription = Auth::user()->subscriptions()->latest()->first();
 
         if (!$subscription) {
-            return redirect()->route('subscription.dashboard')->with('error', 'Langganan Gagal Dicancel');
+            return redirect()->route('subscription.account')->with('error', 'Langganan Gagal Dicancel');
         }
 
     $subscription->is_cancelled = 1;
@@ -72,6 +73,6 @@ class subscriptionDashboardController extends Controller
     $user->save();
 
 
-        return redirect()->route('subscription.dashboard')->with('success', 'Langganan berhasil Cancel');  
+        return redirect()->route('subscription.account')->with('success', 'Langganan berhasil Cancel');  
     }
 }

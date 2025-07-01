@@ -1,61 +1,57 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard User') }}
-        </h2>
-    </x-slot>
+    <section class="bg-[#FFF0DC] dark:bg-[#131010] min-h-screen">
+        <div class="p-8 md:p-12 lg:px-16 lg:py-40">
+            <div class="mx-auto max-w-lg text-center">
+                <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+                    Nikmati Masakan sehat dan fresh kami yang lainnya yuuk!!
+                </h2>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto my-10 p-6 bg-white rounded-xl shadow">
-                @if (session('success'))
-                    <div id="success-alert" role="alert" class="alert alert-success">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>  {{ session('success') }} </span>
+                <p class="hidden text-gray-500 sm:mt-4 sm:block dark:text-gray-400 w-full">
+                    Rasakan pengalaman baru menikmati makanan sehat yang lezat dan bergizi.
+                    Kini hadir dalam paket eksklusif untuk kamu yang peduli kesehatan.
+                    Dengan harga hemat, kamu bisa hidup sehat tanpa khawatir biaya.
+                    SEA Catering, solusi sehat dan praktis untuk keseharianmu!
+                                </p>
+                </div>
+
+                <div class="mx-auto mt-8 max-w-xl">
+                <form action="#" class="sm:flex sm:gap-4">
+                    <div class="sm:flex-1">
+                    <label for="Search" class="sr-only">Search</label>
+
+                    <input
+                        type="search"
+                        placeholder="Cari Paket makananmu"
+                        class="w-full rounded-md border-gray-200 bg-white p-3 shadow-xs transition focus:border-white focus:ring-3 focus:ring-yellow-400 focus:outline-hidden dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                    />
                     </div>
-                @endif
-                <h2 class="text-2xl font-bold mb-6 text-center">Langganan Aktif</h2>
 
-                @if($subscription)
-                <div class="space-y-2">
-                    <p><strong>Paket:</strong> {{ $subscription->subscriptionPlan->name }}</p>
-                    <p><strong>Jenis Makan:</strong> {{ implode(', ', json_decode($subscription->meal_types, true)) }}</p>
-                    <p><strong>Hari Pengiriman:</strong> {{ implode(', ', json_decode($subscription->delivery_days, true)) }}</p>
-                    <p><strong>Harga Total:</strong> Rp {{ number_format($subscription->total_price, 0, ',', '.') }}</p>                 
-                        @if($subscription->is_cancelled)
-                            <p class="text-red-500 font-semibold">Status: Dibatalkan</p>
-                        @elseif($subscription->is_paused)
-                            <p class="text-yellow-600 font-semibold">Status: Sedang Pause ({{ $subscription->pause_start }} - {{ $subscription->pause_end }})</p>
-                        @else
-                            <p class="text-green-600 font-semibold">Status: Aktif</p>
-                        @endif
-                </div>
+                    <button
+                    type="submit"
+                    class="group mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-[#F0BB78] px-5 py-3 text-white transition focus:ring-3 focus:ring-yellow-400 focus:outline-hidden sm:mt-0 sm:w-auto"
+                    >
+                    <span class="text-sm font-medium"> Explore </span>
 
-                <div class="mt-6 flex gap-4">
-                    <!-- Pause Langganan -->
-                    <form action="{{ route('subscription.pause') }}" method="POST" class="flex gap-2 items-center">
-                        @csrf
-                        <input type="date" name="pause_start" required class="border p-2 rounded" />
-                        <input type="date" name="pause_end" required class="border p-2 rounded" />
-                        <button type="submit" class="px-4 py-2 bg-yellow-500 text-white rounded">Pause</button>
-                    </form>
-
-                    <!-- Batalkan Langganan -->
-                    <form action="{{ route('subscription.cancel') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded">Batalkan</button>
-                    </form>
-                </div>
-                @else
-                <p class="text-center text-gray-500">Kamu belum memiliki langganan aktif.</p>
-                @endif
+                    <svg
+                        class="size-5 shadow-sm rtl:rotate-180"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                    </svg>
+                    </button>
+                </form>
             </div>
-            </div>
-
         </div>
-    </div>
+    </section>
+    
 <script>
     setTimeout(function () {
            let alert = document.getElementById('success-alert');

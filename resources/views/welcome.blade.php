@@ -28,7 +28,7 @@
                     <div class="hidden lg:flex home space-x-6 text-xl">
                         <a href="" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
                         <a href="{{ route('menuCatering') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Menu</a>
-                        <a href="{{ route('Testimoni') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
+                        <a href="{{ route('testimoni.index') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
                     </div>    
                     <div class="flex space-x-2">
                         <svg width="40px" height="40px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#543A14" d="M128 352.576V352a288 288 0 0 1 491.072-204.224 192 192 0 0 1 274.24 204.48 64 64 0 0 1 57.216 74.24C921.6 600.512 850.048 710.656 736 756.992V800a96 96 0 0 1-96 96H384a96 96 0 0 1-96-96v-43.008c-114.048-46.336-185.6-156.48-214.528-330.496A64 64 0 0 1 128 352.64zm64-.576h64a160 160 0 0 1 320 0h64a224 224 0 0 0-448 0zm128 0h192a96 96 0 0 0-192 0zm439.424 0h68.544A128.256 128.256 0 0 0 704 192c-15.36 0-29.952 2.688-43.52 7.616 11.328 18.176 20.672 37.76 27.84 58.304A64.128 64.128 0 0 1 759.424 352zM672 768H352v32a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32v-32zm-342.528-64h365.056c101.504-32.64 165.76-124.928 192.896-288H136.576c27.136 163.072 91.392 255.36 192.896 288z"/></svg>
@@ -71,7 +71,7 @@
                         >
                         <li>
                             <a
-                            href=""
+                            href="{{ route('Beranda') }}"
                             class="block w-full rounded-xl px-4 py-2 hover:bg-[#FFD586] hover:text-[#543A14] transition"
                             >
                             Beranda
@@ -79,7 +79,7 @@
                         </li>
                         <li>
                             <a
-                            href="#"
+                            href="{{ route('menuCatering') }}"
                             class="block w-full rounded-xl px-4 py-2 hover:bg-[#FFD586] hover:text-[#543A14] transition"
                             >
                             Menu
@@ -87,7 +87,7 @@
                         </li>
                         <li>
                             <a
-                            href="#"
+                            href="{{ route('testimoni.index') }}"
                             class="block w-full rounded-xl px-4 py-2 hover:bg-[#FFD586] hover:text-[#543A14] transition"
                             >
                             Testimoni
@@ -95,7 +95,7 @@
                         </li>
                         <li>
                             <a
-                            href="#"
+                            href="{{ route('subscriptions.create') }}"
                             class="block w-full rounded-xl px-4 py-2 hover:bg-[#FFD586] hover:text-[#543A14] transition"
                             >
                             Langganan
@@ -103,7 +103,7 @@
                         </li>
                         <li>
                             <a
-                            href="#"
+                            href="{{ route('kontak') }}"
                             class="block w-full rounded-xl px-4 py-2 hover:bg-[#FFD586] hover:text-[#543A14] transition"
                             >
                             Kontak
@@ -127,9 +127,12 @@
                 />
                 <div class="p-4 sm:p-8 md:p-12 lg:px-12 lg:py-24">
                     <div class="mx-auto w-full max-w-xl text-center">
-                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#131010] tracking-tight mb-4">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#131010] tracking-tight mb-4">
+                            Welcome to Sea Catering
+                        </h1>
+                        <h3 class="text-3xl sm:text-2xl md:text-3xl font-extrabold text-[#543A14] tracking-tight mb-4">
                             Makanan Sehat, Kapan Saja, Di Mana Saja
-                        </h2>
+                        </h3>
                         <p class="w-full max-w-4xl mx-auto text-base sm:text-lg mb-6 text-center font-poppins text-[#543A14] transition-transform duration-300 transform hover:translate-x-0 sm:hover:translate-x-10">
                             Nikmati gaya hidup sehat tanpa ribet! SEA Catering hadir untuk Anda yang peduli kesehatan namun tetap ingin praktis dalam menikmati makanan bergizi. Dengan layanan pengiriman ke seluruh Indonesia, kami siap menghadirkan menu sehat langsung ke depan pintu Anda — dari sarapan hingga makan malam!
                         </p>
@@ -254,7 +257,7 @@
                     <div class="text-[#F0BB78] text-[50px]">
                         <i class="fi fi-sr-shipping-fast"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Pengiriman Cepat</h3>
+                    <h3 class="text-xl font-semibold mb-2">Pengiriman Seluruh Indonesia</h3>
                     <p class="text-gray-400 text-sm">Kami mengantar makanan langsung ke lokasi Anda, tepat waktu dan dalam kondisi terbaik.</p>
                 </div>
             </div>
@@ -329,18 +332,18 @@
                             </ul>
 
                             <form class="mt-4 flex gap-4">
-                            <button
-                                class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
-                            >
-                                Add to Cart
-                            </button>
+                                <button
+                                    class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
+                                >
+                                    Add to Cart
+                                </button>
 
-                            <button
-                                type="button"
-                                class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                            >
-                                Beli Plan
-                            </button>
+                                <button
+                                    type="button"
+                                    class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
+                                >
+                                    Beli Plan
+                                </button>
                             </form>
                         </div>
                     </a>
@@ -406,18 +409,18 @@
                             </ul>
 
                             <form class="mt-4 flex gap-4">
-                            <button
-                                class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
-                            >
-                                Add to Cart
-                            </button>
+                                <button
+                                    class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
+                                >
+                                    Add to Cart
+                                </button>
 
-                            <button
-                                type="button"
-                                class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                            >
-                                Beli Plan
-                            </button>
+                                <button
+                                    type="button"
+                                    class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
+                                >
+                                    Beli Plan
+                                </button>
                             </form>
                         </div>
                     </a>
@@ -479,18 +482,18 @@
                             </ul>
 
                             <form class="mt-4 flex gap-4">
-                            <button
-                                class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
-                            >
-                                Add to Cart
-                            </button>
+                                <button
+                                    class="block w-full rounded-sm bg-gray-100 px-4 py-3 text-sm font-medium text-gray-900 transition hover:scale-105"
+                                >
+                                    Add to Cart
+                                </button>
 
-                            <button
-                                type="button"
-                                class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
-                            >
-                                Beli Plan
-                            </button>
+                                <button
+                                    type="button"
+                                    class="block w-full rounded-sm bg-gray-900 px-4 py-3 text-sm font-medium text-white transition hover:scale-105"
+                                >
+                                    Beli Plan
+                                </button>
                             </form>
                         </div>
                     </a>
@@ -559,13 +562,14 @@
                 </div>
             </div>
         </section>
+        {{-- end --}}
 
-{{-- end --}}
         {{-- Footer --}}
         <footer id="contact" class="w-full bg-[#0f0f1a] text-white font-poppins">
-            <div class="max-w-screen-xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
-                
-                <!-- Logo & Description -->
+            <div class="max-w-screen-xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="flex items-center justify-center">
+                    <svg width="100px" height="100px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#F0BB78" d="M128 352.576V352a288 288 0 0 1 491.072-204.224 192 192 0 0 1 274.24 204.48 64 64 0 0 1 57.216 74.24C921.6 600.512 850.048 710.656 736 756.992V800a96 96 0 0 1-96 96H384a96 96 0 0 1-96-96v-43.008c-114.048-46.336-185.6-156.48-214.528-330.496A64 64 0 0 1 128 352.64zm64-.576h64a160 160 0 0 1 320 0h64a224 224 0 0 0-448 0zm128 0h192a96 96 0 0 0-192 0zm439.424 0h68.544A128.256 128.256 0 0 0 704 192c-15.36 0-29.952 2.688-43.52 7.616 11.328 18.176 20.672 37.76 27.84 58.304A64.128 64.128 0 0 1 759.424 352zM672 768H352v32a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32v-32zm-342.528-64h365.056c101.504-32.64 165.76-124.928 192.896-288H136.576c27.136 163.072 91.392 255.36 192.896 288z"/></svg>
+                </div>
                 <div>
                 <h2 class="text-2xl font-semibold font-playFair tracking-wider text-[#FFD586]">SeaCatering</h2>
                 <p class="mt-4 text-sm text-gray-400 leading-relaxed">
@@ -608,7 +612,7 @@
                 </div>
             </div>
         </footer>
-
+        {{-- end --}}
         <script>
                 const menu = document.querySelector('#navbar-sea');
                 const btn = document.querySelector('#navbar-sea-btn');

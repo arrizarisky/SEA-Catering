@@ -32,7 +32,7 @@
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 13 4 6.01V6Zm0 12H4V8.24l7.29 6.41a1 1 0 0 0 1.42 0L20 8.24Z"/></svg>
                     Email
                 </a>
-                <a href="https://goo.gl/maps/xyz" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-[#FFD586] text-[#543A14] rounded-xl hover:bg-[#FFB800] transition shadow-md animate-fade-in-up delay-300">
+                <a href="https://maps.app.goo.gl/XZxbpGH4fx72spQ96" target="_blank" class="flex items-center gap-2 px-4 py-2 bg-[#FFD586] text-[#543A14] rounded-xl hover:bg-[#FFB800] transition shadow-md animate-fade-in-up delay-300">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/></svg>
                     Lokasi
                 </a>
@@ -64,7 +64,7 @@
             document.getElementById('kontakForm').reset();
             document.getElementById('kontakForm').classList.remove('hidden');
             document.getElementById('kontakSuccess').classList.add('hidden');
-        }, 3500);
+        }, 5500);
     };
 </script>
 @endsection

@@ -22,6 +22,7 @@ class UserWithSubscriptionSeeder extends Seeder
             ['name' => 'Protein Plan', 'price' => 40000, 'description' => 'Paket tinggi protein'],
             ['name' => 'Royal Plan', 'price' => 60000, 'description' => 'Paket premium royal'],
         ];
+        
 
         foreach ($plans as $planData) {
             SubscriptionPlan::firstOrCreate(

@@ -3,9 +3,9 @@
             @if (Route::has('login'))
             <nav class="flex flex-wrap items-center pt-10 z-99 relative mx-auto max-w-screen-xl md-order-1 justify-between gap-4 font-playFair border-b border-[#543A14]/10 pb-2">
                     <div class="hidden lg:flex home space-x-6 text-xl">
-                        <a href="" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
+                        <a href="{{ route('Beranda') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Beranda</a>
                         <a href="{{ route('menuCatering') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Menu</a>
-                        <a href="{{ route('Testimoni') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
+                        <a href="{{ route('testimoni.index') }}" class="text-[#131010] font-bold hover:text-white hover:border-b-[2px] border-[#B13BFF] transition">Testimoni</a>
                     </div>    
                     <div class="flex space-x-2">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 512.000000 512.000000"preserveAspectRatio="xMidYMid meet">

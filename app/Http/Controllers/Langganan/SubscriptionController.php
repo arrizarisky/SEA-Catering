@@ -54,22 +54,43 @@ class SubscriptionController extends Controller
             'notes' => 'nullable|string',
             'payment_method' => 'required|in:cash,transfer,ewallet'
         ]);
+        session(['subscription_data' => $request->all()]);
+        return redirect()->route('subscriptions.payment');
+    }
+
+    public function payment() {
+        $data = session('subscription_data');
+        if (!$data) {
+            return redirect()->route('subscriptions.create')->with('error', 'Data tidak ditemukan.');
+        }
+        $plan = SubscriptionPlan::find($data['plan_id']);
+        return view('subscription.payment', compact('data', 'plan'));
+    }
+
+    public function confirm() {
+        $data = session('subscription_data');
+        if (!$data) {
+            return redirect()->route('subscriptions.create')->with('error', 'Data tidak ditemukan.');
+        }
 
         Subscription::create([
             'user_id' => Auth::id(),
-            'subscription_plan_id' => $request->plan_id,
-            'full_name' => $request->full_name,
-            'phone_number' => $request->phone_number,
-            'meal_types' => json_encode($request->meal_types),
-            'delivery_days' => json_encode($request->delivery_days),
-            'allergies' => $request->allergies,
-            'total_price' => $request->total_price,
-            'address' => $request->address,
-            'notes' => $request->notes,
-            'payment_method' => $request->payment_method,
+            'subscription_plan_id' => $data['plan_id'],
+            'full_name' => $data['full_name'],
+            'phone_number' => $data['phone_number'],
+            'meal_types' => json_encode($data['meal_types']),
+            'delivery_days' => json_encode($data['delivery_days']),
+            'allergies' => $data['allergies'],
+            'total_price' => $data['total_price'],
+            'address' => $data['address'],
+            'notes' => $data['notes'] ?? null,
+            'payment_method' => $data['payment_method'],
             'start_date' => now(),
             'end_date' => now()->addMonth(),
         ]);
+
+        session()->forget('subscription_data');
+
         $user = \App\Models\User::find(Auth::id());
         if ($user && $user->role === 'user') {
             $user->role = 'pelanggan';
@@ -77,11 +98,62 @@ class SubscriptionController extends Controller
         }
         return redirect()->route('subscriptions.success')->with('success', 'Langganan berhasil dibuat!');
     }
+    
 
     // Tampilkan halaman sukses setelah simpan
     public function success()
     {
-        return view('subscriptions.success');
+        return view('subscription.success');
+    }
+
+    public function quickForm(SubscriptionPlan $plan)
+    {
+        $user = Auth::user();
+        $last = $user->subscriptions()->latest()->first();
+
+        return view('subscription.quick-form', [
+            'plan' => $plan,
+            'defaults' => [
+                'full_name' => $user->name,
+                'phone_number' => $last->phone_number ?? '',
+                'meal_types' => json_decode($last->meal_types ?? '[]'),
+                'delivery_days' => json_decode($last->delivery_days ?? '[]'),
+                'allergies' => $last->allergies ?? '',
+                'address' => $last->address ?? '',
+                'payment_method' => 'transfer'
+            ]
+        ]);
+    }
+
+
+    public function quickBuy(Request $request)
+    {
+        $request->validate([
+        'plan_id' => 'required|exists:subscription_plans,id',
+        'phone_number' => 'required|string',
+        'meal_types' => 'required|array|min:1',
+        'delivery_days' => 'required|array|min:1',
+        'payment_method' => 'required|in:transfer,ewallet,cash'
+    ]);
+
+    $plan = SubscriptionPlan::findOrFail($request->plan_id);
+    $total = $plan->price * count($request->meal_types) * count($request->delivery_days) * 4.3;
+
+    session([
+        'subscription_data' => [
+            'full_name' => $request->full_name ?? Auth::user()->name,
+            'phone_number' => $request->phone_number,
+            'meal_types' => $request->meal_types,
+            'delivery_days' => $request->delivery_days,
+            'allergies' => $request->allergies,
+            'address' => $request->address,
+            'payment_method' => $request->payment_method,
+            'total_price' => $total,
+            'plan_id' => $plan->id
+        ]
+    ]);
+
+    return redirect()->route('subscriptions.payment');
     }
 
 

@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('/admin');
          }
 
-        return redirect()->intended(route('/'));
+        return redirect()->intended(route('Beranda'));
     }
 
     /**
@@ -45,6 +45,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+        $request->session()->forget('url.intended');
 
         return redirect('/');
     }

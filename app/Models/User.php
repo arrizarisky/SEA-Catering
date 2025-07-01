@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Subscription;
+use App\Models\Testimonial;
 
 class User extends Authenticatable
 {
@@ -47,7 +48,7 @@ class User extends Authenticatable
 
     public function subscriptions()
     {
-        return $this->hasMany(\App\Models\Subscription::class);
+        return $this->hasMany(\App\Models\Subscription::class, 'user_id');
     }
 
     public function activeSubscription()
@@ -59,6 +60,10 @@ class User extends Authenticatable
                   ->orWhere('pause_end', '<', now());
         })
         ->latestOfMany();
+    }
+
+    public function testimonials() {
+    return $this->hasMany(Testimoni::class);
     }
 
     /**

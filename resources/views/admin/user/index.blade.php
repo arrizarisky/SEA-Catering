@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard Admin') }}
+            {{ __('Manajemen Account') }}
         </h2>
     </x-slot>
 
@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        <div class="w-full h-full bg-white p-20">
+                        <div class="w-full h-full flex justify-end items-center space-x-2 p-4">
                             @if ($user->activeSubscription && $user->activeSubscription->is_paused)
                                 <form action="{{ route('admin.subscription.activate', $user->activeSubscription->id) }}" method="POST">
                                     @csrf

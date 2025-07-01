@@ -5,8 +5,8 @@
     <title>{{ config('app.name', 'SeaCatering') }}</title>
 
     {{-- Favicon --}}
-    <link rel="apple-touch-icon" href="/favicon.png">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('images/logo.svg') }}" type="image/x-icon">
 
     {{-- Before Style Stack (tambahan sebelum style utama jika ada) --}}
     @stack('before-style')
